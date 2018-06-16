@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet>
-    <type>premiumRate</type>
-    <workbookName>rateTable_DTT_v1.xlsx</workbookName>
-    <sheetNumberInWorkbook>0</sheetNumberInWorkbook>
-    <firstRateColumnName>7</firstRateColumnName>
-    <rateStartRowNum>4</rateStartRowNum>
-    <rateEndRowNum>7</rateEndRowNum>
-</worksheet>
+<customer>
+    <age>29</age>
+    <id>100</id>
+    <name>mkyong</name>
+</customer>
