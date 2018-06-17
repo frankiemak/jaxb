@@ -1,4 +1,4 @@
-aapackage com.mkyong.core;
+aaapackage com.mkyong.core;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
