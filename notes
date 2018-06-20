@@ -1,0 +1,78 @@
+http://www.baeldung.com/java-properties
+
+Package x;
+
+public abstract interface ComponentConfig (i.e. RateConfig)
+{
+  public abstract String getRateWorkbookName();
+}
+
+public class RateConfigImpl extends AppConfig implements RateConfig
+{
+  public RateConfig() throws Exception
+  {
+    load();
+  }
+  
+  public String getWorkbookName() {
+    return getString("rate.workbookName");
+  }
+}
+
+ 
+Package x;
+
+public class Rate{
+
+  private String workbookName;
+
+  public Rate(RateConfig rateConfig) {
+    this.workbookName = rateConfig.getWorkBookName();
+  }
+
+}
+
+Program folder structure
+/conf (app.properties and logback.xml)
+
+app.properties
+workbookName = workbookName.xlsx
+
+logback.xml
+
+
+/lib (program and necessary jars)
+ 
+Fluend vs splunk
+https://www.slant.co/versus/959/963/~fluentd_vs_splunk
+
+
+Applications:
+
+Scenarios:
+
+
+
+Others
+Suggestion:
+
+1.	String format for message printing to console/file.
+https://stackoverflow.com/questions/925423/is-it-better-practice-to-use-string-format-over-string-concatenation-in-java
+"Hello %1$s the time is %2$t"
+               String.format("Hello %1$s, your name is %1$s and the time is %2$t", name, time)
+
+-	Benefits – localisation, what if the message changes,ableto be controlled by properties file
+
+
+
+
+2.	Program structure – a suggestion
+a.	Applpication in one folder – program change if need to 
+b.	Properties config by one folder – properties/config change just when need to
+c.	A program becomes program + properties, i.e.. rate – DTT_premiumrate = program + config
+d.	Scenario acould be there is no program change, program at v1.0 and properties changed, i.e. business given a new rates excel, hence the excel input file name to the program changes.
+e.	CI/CD – the CI/CD tool, just pickup the last deployed version to production, deploy the new config/properties, re-run the junit (trigger during maven build or afterwards). And vice-versa, when only program changed, i.e. the logic to how to decode a rate table, let’s say.
+
+f.	Externalise resources from the jar. i.e. the rate excel table. To allow the structure of 
+
+g.	Program in one older, config/properties in one folder.
