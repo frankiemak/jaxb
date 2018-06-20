@@ -76,3 +76,48 @@ e.	CI/CD – the CI/CD tool, just pickup the last deployed version to production
 f.	Externalise resources from the jar. i.e. the rate excel table. To allow the structure of 
 
 g.	Program in one older, config/properties in one folder.
+
+
+
+-------------------------------------------------------------------------
+package com.x;
+
+import java.util.Properties;
+
+
+public class AppConfig {
+    
+    private static AppConfig sInstance = null;
+    private Properties props = null;
+    
+    /** Creates a new instance of AppConfig */
+    private AppConfig() {
+        props = new Properties();
+        try
+        {
+            props.load(getClass().getResourceAsStream("/app.properties"));
+            //System.out.println("app properties loaded");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public static synchronized AppConfig getInstance(){
+        if (sInstance == null)
+            sInstance = new AppConfig();
+        
+        return sInstance;
+    }
+    
+    public String getProperty(String key){
+        String value = null;
+        if (props.containsKey(key)){
+            value = (String)props.get(key);
+        } else{
+            // the property is absent
+        }
+        return value;
+    }
+}
